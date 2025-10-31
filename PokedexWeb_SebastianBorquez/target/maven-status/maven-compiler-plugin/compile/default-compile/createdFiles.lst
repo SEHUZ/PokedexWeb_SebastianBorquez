@@ -1,0 +1,4 @@
+com\mycompany\pokedexweb_sebastianborquez\resources\JakartaEE10Resource.class
+com\mycompany\pokedexweb_sebastianborquez\JakartaRestConfiguration.class
+com\mycompany\pokedexweb_sebastianborquez\dominio\PokemonDTO.class
+com\mycompany\pokedexweb_sebastianborquez\servlets\PokemonServlet.class
