@@ -4,9 +4,6 @@
  */
 package com.mycompany.pokedexweb_sebastianborquez.servlets;
 
-import com.mycompany.pokedexweb_sebastianborquez.dominio.PokemonDTO;
-import com.mycompany.pokedexweb_sebastianborquez.dominio.Tipo;
-import com.mycompany.pokedexweb_sebastianborquez.persistencia.PokemonDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,23 +11,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author sonic
  */
-@WebServlet(name = "PokemonServlet", urlPatterns = {"/PokemonServlet"})
-public class PokemonServlet extends HttpServlet {
-    
-    private List<PokemonDTO> listaPokemones = new ArrayList<>();
-    private PokemonDAO dao = new PokemonDAO();
-    
-    @Override
-    public void init() throws ServletException {
-        listaPokemones.addAll(dao.obtenerNuevosPokemones());
-    }
+@WebServlet(name = "ListaPokemonServlet", urlPatterns = {"/ListaPokemonServlet"})
+public class ListaPokemonServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -49,10 +36,10 @@ public class PokemonServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PokemonServlet</title>");            
+            out.println("<title>Servlet ListaPokemonServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PokemonServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListaPokemonServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,9 +57,7 @@ public class PokemonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.setAttribute("pokemones", listaPokemones);
-        request.getRequestDispatcher("listaPokemones.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -87,23 +72,6 @@ public class PokemonServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        response.setContentType("text/html;charset=UTF-8");
-        
-        String nombre = request.getParameter("nombre");
-        int numero = Integer.parseInt(request.getParameter("numero"));
-        String tipoString = request.getParameter("tipo");
-        String url = request.getParameter("url"); 
-        
-        Tipo tipo = Tipo.valueOf(tipoString);
-        
-        PokemonDTO nuevopk = new PokemonDTO(nombre, numero, tipo, url);
-        listaPokemones.add(nuevopk);
-        
-        // Guardar la lista en el request y redirigir a la página de lista
-        request.setAttribute("pokemones", listaPokemones);
-        request.getRequestDispatcher("listaPokemones.jsp").forward(request, response);
-        
     }
 
     /**

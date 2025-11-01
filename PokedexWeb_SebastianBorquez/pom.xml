@@ -5,7 +5,7 @@
     <artifactId>PokedexWeb_SebastianBorquez</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>PokedexWeb_SebastianBorquez-1.0</name>
+    <name>PokedexWeb_SebastianBorquez</name>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

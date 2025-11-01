@@ -11,10 +11,10 @@ package com.mycompany.pokedexweb_sebastianborquez.dominio;
 public class PokemonDTO {
     private String nombre;
     private int numero;
-    private String tipo;
+    private Tipo tipo;
     private String imagen;
 
-    public PokemonDTO(String nombre, int numero, String tipo, String imagen) {
+    public PokemonDTO(String nombre, int numero, Tipo tipo, String imagen) {
         this.nombre = nombre;
         this.numero = numero;
         this.tipo = tipo;
@@ -30,7 +30,7 @@ public class PokemonDTO {
     }
 
     public String getTipo() {
-        return tipo;
+        return tipo.name();
     }
 
     public String getImagen() {

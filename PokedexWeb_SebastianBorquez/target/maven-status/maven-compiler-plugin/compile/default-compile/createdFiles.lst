@@ -1,4 +1,8 @@
 com\mycompany\pokedexweb_sebastianborquez\resources\JakartaEE10Resource.class
 com\mycompany\pokedexweb_sebastianborquez\JakartaRestConfiguration.class
 com\mycompany\pokedexweb_sebastianborquez\dominio\PokemonDTO.class
+com\mycompany\pokedexweb_sebastianborquez\persistencia\PokemonDAO.class
+com\mycompany\pokedexweb_sebastianborquez\servlets\ListaPokemonServlet.class
+com\mycompany\pokedexweb_sebastianborquez\dominio\Tipo.class
+com\mycompany\pokedexweb_sebastianborquez\persistencia\IPokemonDAO.class
 com\mycompany\pokedexweb_sebastianborquez\servlets\PokemonServlet.class
