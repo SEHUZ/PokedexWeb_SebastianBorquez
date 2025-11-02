@@ -20,8 +20,8 @@ public class PokemonDAO implements IPokemonDAO{
         List<PokemonDTO> pokemonNuevos = Arrays.asList(
             new PokemonDTO("Chimchar", 105, Tipo.FUEGO, "img/chimchar.png"),
             new PokemonDTO("Squirtle", 65, Tipo.AGUA, "img/squirtle.png"),
-            new PokemonDTO("Charizard", 15, Tipo.FUEGO, "img/charizard"),
-            new PokemonDTO("Wooloo", 195, Tipo.NORMAL, "img/wooloo")
+            new PokemonDTO("Charizard", 15, Tipo.FUEGO, "img/charizard.png"),
+            new PokemonDTO("Wooloo", 195, Tipo.NORMAL, "img/wooloo.png")
         );
         return pokemonNuevos;
     }

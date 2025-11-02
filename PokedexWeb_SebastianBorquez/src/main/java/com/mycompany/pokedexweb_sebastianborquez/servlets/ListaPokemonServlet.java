@@ -4,13 +4,19 @@
  */
 package com.mycompany.pokedexweb_sebastianborquez.servlets;
 
+import com.mycompany.pokedexweb_sebastianborquez.dominio.PokemonDTO;
+import com.mycompany.pokedexweb_sebastianborquez.persistencia.PokemonDAO;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -36,7 +42,7 @@ public class ListaPokemonServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListaPokemonServlet</title>");            
+            out.println("<title>Servlet ListaPokemonServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListaPokemonServlet at " + request.getContextPath() + "</h1>");
@@ -55,19 +61,22 @@ public class ListaPokemonServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        
+        List<PokemonDTO> listaPokemones = (List<PokemonDTO>) session.getAttribute("pokemones");
+
+        if (listaPokemones == null) {
+            PokemonDAO dao = new PokemonDAO();
+            listaPokemones = new ArrayList<>(dao.obtenerNuevosPokemones());
+            session.setAttribute("pokemones", listaPokemones);
+        }
+        
+        request.setAttribute("pokemones", listaPokemones);
+
+        request.getRequestDispatcher("/ListaPokemon.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
