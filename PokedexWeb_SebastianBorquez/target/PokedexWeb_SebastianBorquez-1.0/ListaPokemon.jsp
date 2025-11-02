@@ -4,7 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <title>Pokedex - Lista</title>
-        <link rel="stylesheet" href="css/estilos.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="estilos/lista.css">
     </head>
     <body>
         <div class="container">
@@ -42,7 +43,7 @@
                     </table>
                 </c:when>
                 <c:otherwise>
-                    <p>No hay Pokémon registrados todavía.</p>
+                    <p>No hay Pokemon registrados todavia.</p>
                 </c:otherwise>
             </c:choose>
 

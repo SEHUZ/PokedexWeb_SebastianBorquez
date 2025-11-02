@@ -5,11 +5,11 @@
         <meta charset="UTF-8">
         <title>Pokedex - Registrar Pokemon</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/estilos.css">
+        <link rel="stylesheet" href="estilos/registrar.css">
     </head>
     <body>
         <div class="container">
-            <h1>Agregar un nuevo Pokémon</h1>
+            <h1>POKEDEX</h1>
 
             <c:if test="${not empty mensaje}">
                 <div class="alert alert-danger"> ${mensaje}
@@ -43,7 +43,7 @@
                     <input type="text" id="urlImagen" name="urlImagen" placeholder="img/pokemon.png" value="${param.urlImagen}" required>
                 </div>
 
-                <button type="submit">Registrar Pokémon</button>
+                <button type="submit">Registrar Pokemon</button>
             </form>
 
             <br>
